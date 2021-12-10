@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Vistas.TipDetalle">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="20" Padding="15">
+                    <DatePicker  Date="{Binding Tip.FechaActualizacion}" FontSize="Small"/>
+                    <Label Text="Titulo:" FontSize="Medium" />
+                    <Entry Text="{Binding Tip.Titulo}" FontSize="Small"/>
+                    <Label Text="Descripcion:" FontSize="Medium" />
+                    <Editor Text="{Binding Tip.Descripcion}" FontSize="Small"/>
+                    <Label Text="Autor:" FontSize="Medium" />
+                    <Picker HorizontalOptions="Fill"
+                    FontSize="Medium"
+                    ItemsSource="{Binding Autores}"
+                    ItemDisplayBinding="{Binding Nombre}"
+                    SelectedItem="{Binding Autor}"
+                    Title="Seleccionar autor"/>
+                    <Button
+                Command="{Binding BotonGuardar}"
+                Text="Guardar Cambios"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

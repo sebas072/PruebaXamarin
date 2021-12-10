@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestXamarin.Vistas.ListadoTipsPage"
+             Title="Tips">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="TipsLista" ItemsSource="{Binding Tips}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100">
+                            <Grid x:Name="Item">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Padding="10" Grid.Column="1" Spacing="10">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding FechaCreacion}" 
+                                            FontSize="Small" />
+                                            <Label Text="{Binding Titulo, StringFormat = 'Titulo: {0}'}" 
+                                            FontSize="Small" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Padding="10" Grid.Column="2" Spacing="10">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <Button BindingContext="{Binding Source={x:Reference TipsLista}, Path=BindingContext}" Command="{Binding BotonNavegarDetalle}"  
+                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" Text="Editar"></Button>
+                                        <Button BackgroundColor="Red" BindingContext="{Binding Source={x:Reference TipsLista}, Path=BindingContext}" Command="{Binding BotonEliminar}"  
+                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" Text="Eliminar"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Command="{Binding BotonNavegarDetalle}" Text="Crear"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
